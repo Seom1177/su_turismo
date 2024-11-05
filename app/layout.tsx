@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.png",
   },
 };
 
@@ -51,8 +51,8 @@ export default function RootLayout({
               <Link
                 isExternal
                 className="flex items-center gap-1 text-current"
-                href="https://nextui-docs-v2.vercel.app?utm_source=next-app-template"
-                title="Github de colaborador"
+                href="https://github.com/Seom1177"
+                title="Github del colaborador"
               >
                 <span className="text-default-600">Hecho por:</span>
                 <p className="text-primary">Seom</p>
