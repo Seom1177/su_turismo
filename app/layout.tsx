@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import { Link } from "@nextui-org/link";
 import clsx from "clsx";
+import { Divider } from "@nextui-org/react";
 
 import { Providers } from "./providers";
 
@@ -48,15 +49,20 @@ export default function RootLayout({
               {children}
             </main>
             <footer className="w-full flex items-center justify-center py-3">
-              <Link
-                isExternal
-                className="flex items-center gap-1 text-current"
-                href="https://github.com/Seom1177"
-                title="Github del colaborador"
-              >
-                <span className="text-default-600">Hecho por:</span>
-                <p className="text-primary">Seom</p>
-              </Link>
+              <div className="max-w">
+                <Divider className="w-full" />
+                <div className="space-y-1">
+                  <Link
+                    isExternal
+                    className="flex items-center gap-1 text-current"
+                    href="https://github.com/Seom1177"
+                    title="Github del colaborador"
+                  >
+                    <span className="text-default-600">Hecho con:</span>
+                    <p className="text-primary">Paciencia</p>
+                  </Link>
+                </div>
+              </div>
             </footer>
           </div>
         </Providers>

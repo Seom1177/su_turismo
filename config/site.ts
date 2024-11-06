@@ -6,20 +6,8 @@ export const routes_navbar = [
     href: "/",
   },
   {
-    label: "Destinos",
-    href: "/docs",
-  },
-  {
-    label: "Negocios",
-    href: "/pricing",
-  },
-  {
     label: "Sobre nosotros",
-    href: "/blog",
-  },
-  {
-    label: "Contacto",
-    href: "/about",
+    href: "/about-us",
   },
 ];
 

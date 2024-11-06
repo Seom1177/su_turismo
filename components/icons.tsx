@@ -9,7 +9,15 @@ interface LogoProps {
 }
 
 export const Logo: React.FC<LogoProps> = ({ size = 36 }) => (
-  <Image alt="NextUI hero Image" src="/su_turismo.png" width={size} />
+  <Image
+    alt="NextUI hero Image"
+    src="/su_turismo.png"
+    style={{
+      objectFit: "cover",
+      minWidth: { size } + "px",
+    }}
+    width={size}
+  />
 );
 
 export const DiscordIcon: React.FC<IconSvgProps> = ({
