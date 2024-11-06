@@ -1,6 +1,18 @@
 "use client";
 
-import { Button, Card, CardFooter, CardHeader, Image } from "@nextui-org/react";
+import {
+  Button,
+  Card,
+  CardFooter,
+  CardHeader,
+  Image,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  useDisclosure,
+} from "@nextui-org/react";
 
 interface ImageCard {
   place: string;
@@ -8,16 +20,24 @@ interface ImageCard {
   urlImage: string;
   description: string;
 }
+let image_card: ImageCard = {
+  place: "",
+  title: "",
+  urlImage: "",
+  description: "",
+};
 
 export const Carrusel = () => {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   return (
     <div className="max-w-[1200px] gap-4 grid grid-cols-12 grid-rows-2 px-8">
       {list.map((item, index) => (
         <Card
           key={index}
           isFooterBlurred
-          className={`col-span-12 sm:col-span-4 h-[300px] items-center justify-center${
-            index >= list.length - 2 ? "sm:col-start-5" : ""
+          className={`col-span-12 sm:col-span-4 h-[300px] items-center justify-center ${
+            index >= list.length - 1 ? "sm:col-start-5" : ""
           }`}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent z-10" />
@@ -34,21 +54,48 @@ export const Carrusel = () => {
             src={item.urlImage}
           />
           <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-center">
-            <div>
-              {/* <p className="text-black text-tiny"></p> */}
-              {/* <p className="text-black text-tiny">Ubicación.</p> */}
-            </div>
             <Button
-              className="text-tiny"
+              key={index}
+              className="font-medium text-white"
               color="primary"
               radius="full"
               size="sm"
+              onPress={() => {
+                image_card = item;
+                onOpen();
+              }}
             >
               Más información
             </Button>
           </CardFooter>
         </Card>
       ))}
+      <Modal isOpen={isOpen} size="5xl" onOpenChange={onOpenChange}>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">
+                {image_card.title} en {image_card.place}
+              </ModalHeader>
+              <ModalBody>
+                <p>{image_card.description}</p>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="light" onPress={onClose}>
+                  Cerrar
+                </Button>
+                <Button
+                  className="font-medium text-white"
+                  color="primary"
+                  onPress={onClose}
+                >
+                  Saber más
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </div>
   );
 };
@@ -56,7 +103,7 @@ export const Carrusel = () => {
 const list: ImageCard[] = [
   {
     place: "Fusagasugá",
-    title: "La Clarita- El Jardín de Doña Bertha - Orquídeas y Bromelias.",
+    title: "La clarita, el Jardín de Doña Bertha",
     urlImage:
       "https://i.pinimg.com/originals/c9/c0/48/c9c04898a3166d1782dd2ece47525a95.jpg",
     description:
