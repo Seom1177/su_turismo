@@ -6,6 +6,14 @@ export const routes_navbar = [
     href: "/",
   },
   {
+    label: "Destinos",
+    href: "/",
+  },
+  {
+    label: "Negocios",
+    href: "/",
+  },
+  {
     label: "Sobre nosotros",
     href: "/about-us",
   },
